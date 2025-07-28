@@ -4,7 +4,7 @@ plugins {
 }
 
 application {
-    mainClass = 'com.codingmonster.clientgateway.AcceptorRunner'
+    mainClass = 'com.codingmonster.broker.AcceptorRunner'
 }
 repositories {
     // Use Maven Central for resolving dependencies.
