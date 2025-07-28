@@ -1,4 +1,3 @@
-# TODO This is still in progress, do not use
 # QuickFIX/J Java Examples: Create, Send, Receive, and Process FIX Messages
 
 This repository demonstrates how to use [QuickFIX/J](https://github.com/quickfix-j/quickfixj) to build Java applications that communicate over the [FIX protocol](https://www.fixtrading.org/).
@@ -113,15 +112,19 @@ I have added lots of messages and thread.sleep to give a good understanding of i
 
 ## How to Run
 
-https://github.com/apusingh1967/learn_fix_with_quickfixj.git
+git clone https://github.com/apusingh1967/learn_fix_with_quickfixj.git
 
 cd learn_fix_with_quickfixj
 
 #### Run Acceptor - receiving fix messages, processing and sending execution report back
 gradle :broker:run
+(better to run from intellij, since Gradle outputs a lot of junk in console, and if I turn it off through gradle.properties, application logs also disappear. .idea is checked in)
 
 #### Run Initiator - sending fix messages
 gradle :broker:test
+(as above, better to run in intellij)
+
+.idea is checked in, so run configuration should be available in IntelliJ Run -> Edit Configuration
 
 Issues
 may need to `unset GRADLE_OPTS` in case cant see logs on console

@@ -1,10 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="com.codingmonster.broker.AcceptorRunner" type="Application" factoryName="Application" nameIsGenerated="true">
+  <configuration default="false" name="AcceptorRunner" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="ALTERNATIVE_JRE_PATH" value="21" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <option name="MAIN_CLASS_NAME" value="com.codingmonster.broker.AcceptorRunner" />
     <module name="learn_fix_with_quickfixj.broker.main" />
-    <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.codingmonster.client.*" />

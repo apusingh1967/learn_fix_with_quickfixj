@@ -2,6 +2,8 @@
 package com.codingmonster.client;
 
 import java.io.InputStream;
+import java.util.concurrent.SynchronousQueue;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import quickfix.*;
@@ -10,9 +12,11 @@ import quickfix.fix44.ExecutionReport;
 public class InitiatorApplication extends MessageCracker implements Application {
 
   private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+  private final SynchronousQueue<ExecutionReport>queue;
   private SessionID sessionID;
 
-  public InitiatorApplication() {
+  public InitiatorApplication(SynchronousQueue<ExecutionReport> queue) {
+    this.queue = queue;
     try {
       InputStream input =
           InitiatorApplication.class.getClassLoader().getResourceAsStream("initiator.cfg");
@@ -68,8 +72,13 @@ public class InitiatorApplication extends MessageCracker implements Application 
   }
 
   @Handler
-  public void onExecutionReport(ExecutionReport report, SessionID sessionId) throws FieldNotFound {
+  public void onExecutionReport(ExecutionReport report, SessionID sessionId) {
     LOG.info("Received execution report: " + report);
+    try {
+      queue.put(report);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Handler
